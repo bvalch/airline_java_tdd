@@ -29,4 +29,9 @@ public class PlaneTest {
         assertEquals(600, plane1.getTotalWeight());
 
     }
+    @Test
+    public void canAddSeatNumber(){
+        plane1.addRandomSeat(5);
+        assertEquals(5,plane1.getSeatsArray().get(0),0.0);
+    }
 }

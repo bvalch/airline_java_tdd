@@ -1,13 +1,11 @@
 import java.util.ArrayList;
-import java.util.Random;
+
 
 public class Plane {
-
-    private PlaneType planeType;
-
-    private int capacity;
-    private int totalWeight;
-    private ArrayList<Integer> seats;
+    private final PlaneType planeType;
+    private final int capacity;
+    private final int totalWeight;
+    private final ArrayList<Integer> seats;
 
     public Plane(PlaneType planeType){
         this.planeType=planeType;

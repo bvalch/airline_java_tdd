@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,7 +12,6 @@ public class FlightTest {
     CabinCrew flightAttendant=new CabinCrew("Poe",RankType.FLIGHT_ATTENDANT);
     CabinCrew flightPurser = new CabinCrew("Butch",RankType.PURSER);
     CabinCrew firstOfficer = new CabinCrew("BigMan",RankType.FIRST_OFFICER);
-    ArrayList<CabinCrew> cabinCrew1;
     Plane plane1 = new Plane(PlaneType.DEATHBOX999);
     Psngr psngr1 = new Psngr("Willy",3);
     Psngr psngr2 = new Psngr("Olaf",2);
@@ -37,6 +36,11 @@ public class FlightTest {
         assertEquals(plane1,flight1.getPlane());
     }
     @Test
+    public void flightHasAPilot(){
+        assertEquals(pilot1,flight1.getPilot());
+    }
+
+    @Test
     public void flightHasCrew(){
         assertEquals("[Poe, Butch, BigMan]",flight1.getCrew().toString());
     }
@@ -46,6 +50,7 @@ public class FlightTest {
         flight1.addCrew(flightAttendantTest);
         assertEquals(4,flight1.getCrewSize());
     }
+
     @Test
     public void flightHasPsngrs(){
         assertEquals("[Willy, Olaf, Billy, Rex]",flight1.getPsngrNames().toString());
@@ -65,7 +70,7 @@ public class FlightTest {
         assertEquals(5,flight1.getNumOfPsngrs());
     }
     @Test
-    public void flightReturnsAvaliableSeatSize(){
+    public void flightReturnsAvaliableSeatCount(){
         assertEquals(1,flight1.getAvaliableSeats());
     }
     @Test
@@ -74,12 +79,31 @@ public class FlightTest {
         assertEquals("[Olaf, Billy, Rex]",flight1.getPsngrNames().toString());
     }
     @Test
-    public void attendantTellsOfPassangers(){
+    public void attendantTellsOffPassangers(){
         assertEquals("FLIGHT_ATTENDANT Poe here.Can I ask Willy, Olaf, Billy, Rex to stop causing trouble?",flight1.crewSpeaks(flightAttendant));
     }
 
     @Test
     public void getTheArrayOfSeatsFromPlane(){
-        assertEquals(1,plane1.getSeatsArray());
+        assertEquals(4,plane1.getSeatsArray().size());
     }
+    @Test
+    public void flightHasAFlightNum(){
+        assertEquals("DB777",flight1.getFlightNum());
+    }
+    @Test
+    public void hasOrigin() {
+        assertEquals("NOH",flight1.getOrigin());
+    }
+    @Test
+    public void hasDestination(){
+        assertEquals("SOH",flight1.getDestination());
+
+    }
+    @Test
+    public void hasDepartureTime(){
+        assertEquals("Today",flight1.getDepartureTime());
+    }
+
+
 }

@@ -11,7 +11,7 @@ public class PilotTest {
     public void before() {
         pilot = new Pilot("Ace", RankType.CAPTAIN, "Licence1234");
         plane = new Plane(PlaneType.DEATHBOX999);
-        pilot.getAssignedToAPlane(plane);
+
 
     }
 
@@ -33,11 +33,21 @@ public class PilotTest {
 
     @Test
     public void pilotIsAssignedToPlane() {
+        pilot.getAssignedToAPlane(plane);
         assertEquals("I am assigned to DEATHBOX999", pilot.getPlaneAssignedToPilot());
     }
 
     @Test
     public void pilotFliesPlane() {
+        pilot.getAssignedToAPlane(plane);
         assertEquals("Ace here I'm flying DEATHBOX999", pilot.pilotPilotsPlane());
+    }
+    @Test
+    public void pilotCantPilotPlaneIfNotAssigned(){
+        assertEquals("I am not assigned to a plane yet",pilot.pilotPilotsPlane());
+    }
+    @Test
+    public void pilotStartsUnassignedToPlane(){
+        assertEquals("I am not assigned to a plane yet",pilot.getPlaneAssignedToPilot());
     }
 }

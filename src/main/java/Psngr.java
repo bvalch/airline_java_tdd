@@ -1,8 +1,8 @@
 public class Psngr {
 
 
-    private String name;
-    private int numBags;
+    private final String name;
+    private final int numBags;
     private String flightNumber;
     private int seatNumber;
 
@@ -10,7 +10,7 @@ public class Psngr {
         this.name=name;
         this.numBags=numBags;
         this.flightNumber=null;
-        this.seatNumber = seatNumber;
+        this.seatNumber = 0;
     }
     public String getName(){
         return this.name;

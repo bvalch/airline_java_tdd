@@ -3,14 +3,14 @@ import java.util.Random;
 
 public class Flight {
 
-    private Pilot pilot;
-    private ArrayList<CabinCrew> cabinCrew;
-    private Plane plane;
-    private String flightNum;
-    private String destination;
-    private String origin;
-    private String departureTime;
-    private ArrayList<Psngr> psngrs;
+    private final Pilot pilot;
+    private final ArrayList<CabinCrew> cabinCrew;
+    private final Plane plane;
+    private final String flightNum;
+    private final String destination;
+    private final String origin;
+    private final String departureTime;
+    private final ArrayList<Psngr> psngrs;
 
     public Flight(Pilot pilot, Plane plane, String flightNum, String destination, String origin, String departureTime) {
         this.pilot = pilot;
@@ -20,7 +20,7 @@ public class Flight {
         this.destination = destination;
         this.origin = origin;
         this.departureTime = departureTime;
-        this.psngrs = new ArrayList<Psngr>();
+        this.psngrs = new ArrayList<>();
 
     }
 
@@ -30,6 +30,9 @@ public class Flight {
 
     public void addCrew(CabinCrew crew) {
         this.cabinCrew.add(crew);
+    }
+    public Pilot getPilot(){
+        return this.pilot;
     }
 
     public void addPsngr(Psngr psngr) {
@@ -46,7 +49,7 @@ public class Flight {
 
 
     public int generateRandomSeat() {
-        int random = new Random().nextInt(this.plane.getCapacity() - 0) + 1;
+        int random = new Random().nextInt(this.plane.getCapacity()) + 1;
         while (checkifSeatUnique(random)) {
             random = generateRandomSeat();
         }
@@ -64,8 +67,8 @@ public class Flight {
 
     public ArrayList<String> getCrew() {
         ArrayList<String> namesOfCabinCrew = new ArrayList<>();
-        for (int i = 0; i < cabinCrew.size(); i++) {
-            namesOfCabinCrew.add(cabinCrew.get(i).getName());
+        for (CabinCrew crew : cabinCrew) {
+            namesOfCabinCrew.add(crew.getName());
         }
         return namesOfCabinCrew;
     }
@@ -76,16 +79,16 @@ public class Flight {
 
     public ArrayList<String> getPsngrNames() {
         ArrayList<String> namesOfPsngrs = new ArrayList<>();
-        for (int i = 0; i < psngrs.size(); i++) {
-            namesOfPsngrs.add(psngrs.get(i).getName());
+        for (Psngr psngr : psngrs) {
+            namesOfPsngrs.add(psngr.getName());
         }
         return namesOfPsngrs;
     }
 
     public String crewSpeaks(CabinCrew crew) {
         ArrayList<String> namesOfPsngrs = new ArrayList<>();
-        for (int i = 0; i < this.psngrs.size(); i++) {
-            namesOfPsngrs.add(psngrs.get(i).getName());
+        for (Psngr psngr : this.psngrs) {
+            namesOfPsngrs.add(psngr.getName());
         }
         String psngrNamesString = String.join(", ", namesOfPsngrs);
         return crew.getRankType().toString() + " " + crew.getName() + " here." + "Can I ask " + psngrNamesString + " to stop causing trouble?";
@@ -98,14 +101,28 @@ public class Flight {
 
     public void removePsngr(String name) {
         Psngr psngrToRemove = null;
-        for (int i = 0; i < this.psngrs.size(); i++) {
-            if (this.psngrs.get(i).getName() == name) {
-                psngrToRemove = this.psngrs.get(i);
+        for (Psngr psngr : this.psngrs) {
+            if (psngr.getName().equals(name)) {
+                psngrToRemove = psngr;
             }
         }
         this.psngrs.remove(psngrToRemove);
     }
 
+    public String getFlightNum() {
+        return flightNum;
+    }
 
+    public String getDestination() {
+        return destination;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
 }
 

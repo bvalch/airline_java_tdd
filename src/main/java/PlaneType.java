@@ -1,8 +1,7 @@
-import java.util.HashSet;
+
 
 public enum PlaneType {
 
-    BOEING747(20, 500),
     DEATHBOX999(5, 600),
     MOONPLANE1337(40, 700);
 

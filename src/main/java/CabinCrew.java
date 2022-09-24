@@ -1,6 +1,6 @@
 public class CabinCrew {
 
-    private String name;
+    private final String name;
     RankType rankType;
 
     public CabinCrew(String name, RankType rankType){
