@@ -13,7 +13,7 @@ public class Plane {
         this.planeType=planeType;
         this.capacity= planeType.getCapacity();
         this.totalWeight= planeType.getTotalWeight();
-        this.seats = new ArrayList<Integer>();
+        this.seats = new ArrayList<>();
     }
 
     public PlaneType getPlaneType() {
@@ -29,7 +29,7 @@ public class Plane {
         this.seats.add(seat);
 
     }
-    public ArrayList getSeatsArray(){
+    public ArrayList<Integer> getSeatsArray(){
         return this.seats;
     }
 
